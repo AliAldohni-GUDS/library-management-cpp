@@ -1,0 +1,14 @@
+# build outputs
+build/
+out/
+*.o
+*.obj
+*.exe
+
+# IDE files
+.vscode/
+.idea/
+*.user
+*.suo
+*.vcxproj*
+*.sln
