@@ -40,7 +40,7 @@ library-management-cpp/
 
 ## Object-Oriented Programming Concepts
 
-### 1. Encapsulation
+<Encapsulation>
 All class attributes are declared as **private** and accessed only through **public methods**, ensuring controlled access to internal state.
 
 Example:
