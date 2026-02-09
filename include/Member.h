@@ -13,7 +13,7 @@ private:
 
 public:
     // Constructor
-    Member(const std::string& name, const std::string& memberId, int borrowLimit = 3);
+    Member(const std::string& name, const std::string& memberId, int borrowLimit);
 
     // Getters
     std::string getName() const;

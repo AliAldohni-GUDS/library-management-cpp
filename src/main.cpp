@@ -1,27 +1,35 @@
 #include <iostream>
 #include "Book.h"
-#include "Member.h"
+#include "RegularMember.h"
+#include "PremiumMember.h"
 
 int main() {
-    Book book("Clean Code", "Robert C. Martin", "9780132350884");
+    Book book1("Clean Code", "Robert C. Martin", "9780132350884");
+    Book book2("The Pragmatic Programmer", "Andrew Hunt", "9780201616224");
+    Book book3("Design Patterns", "GoF", "9780201633610");
+    Book book4("Refactoring", "Martin Fowler", "9780201485677");
 
-    Member member("Ali", "M001");
+    RegularMember regular("Ali", "R001");
+    PremiumMember premium("Ali", "P001");
 
-    std::cout << "Book Info:\n";
-    std::cout << "Title: " << book.getTitle() << std::endl;
-    std::cout << "Author: " << book.getAuthor() << std::endl;
-    std::cout << "ISBN: " << book.getIsbn() << std::endl;
+    std::cout << "Regular member limit: " << regular.getBorrowLimit() << std::endl;
+    std::cout << "Premium member limit: " << premium.getBorrowLimit() << std::endl;
 
-    std::cout << "\nMember Info:\n";
-    std::cout << "Name: " << member.getName() << std::endl;
-    std::cout << "ID: " << member.getMemberId() << std::endl;
-    std::cout << "Can borrow more? "
-              << (member.canBorrowMore() ? "Yes" : "No") << std::endl;
+    // Regular tries to borrow 4 books (should allow only 3)
+    if (regular.canBorrowMore()) regular.addBorrowedIsbn(book1.getIsbn());
+    if (regular.canBorrowMore()) regular.addBorrowedIsbn(book2.getIsbn());
+    if (regular.canBorrowMore()) regular.addBorrowedIsbn(book3.getIsbn());
+    if (regular.canBorrowMore()) regular.addBorrowedIsbn(book4.getIsbn()); // should NOT happen
 
-    member.addBorrowedIsbn(book.getIsbn());
+    std::cout << "Regular borrowed count: " << regular.borrowedCount() << std::endl;
 
-    std::cout << "Borrowed count after borrowing: "
-              << member.borrowedCount() << std::endl;
+    // Premium borrows 4 books (should allow)
+    if (premium.canBorrowMore()) premium.addBorrowedIsbn(book1.getIsbn());
+    if (premium.canBorrowMore()) premium.addBorrowedIsbn(book2.getIsbn());
+    if (premium.canBorrowMore()) premium.addBorrowedIsbn(book3.getIsbn());
+    if (premium.canBorrowMore()) premium.addBorrowedIsbn(book4.getIsbn());
+
+    std::cout << "Premium borrowed count: " << premium.borrowedCount() << std::endl;
 
     return 0;
 }
