@@ -90,5 +90,5 @@ Incremental commits for each development step
 Repository pushed to GitHub with clean commit history
 
 Author
-Ali Aldohin / s-001075
+Ali Aldohni / s-001075
 Coding Camp – C++ Object-Oriented Programming Assignment
